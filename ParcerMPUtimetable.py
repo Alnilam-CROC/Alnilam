@@ -24,7 +24,7 @@ def getJSON(group):
 
 import json
 
-data = getJSON('211-812')
+data = getJSON('211-361')
 data = json.dumps(data)
 data = json.loads(data)
 
@@ -67,10 +67,10 @@ def lessons_schedule(json_data):
                         if date_comparison(df, dt, week_day):
                             lesson_name = lesson["sbj"]
                             teacher = lesson["teacher"]
-                            location = lesson["location"]
+                            location = lesson["location"] + " "
                             place = lesson["auditories"][0]["title"]
                             type = lesson["type"]
-                            if location == "Webinar": place = place[place.find("https"): place.find('target') - 2]
+                            if "href" in place: place = place[place.find("https"): place.find('target') - 2]
 
                             event = Event()
 
